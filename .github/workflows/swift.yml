@@ -38,5 +38,8 @@ jobs:
       - name: Build and test
         run: |
           ls
+          swift package generate-xcodeproj
+          xcodebuild build -sdk iphoneos -scheme 'TimelineView-Package'
+          xcodebuild test -destination 'name=iPhone 8' -scheme 'TimelineView-Package'
         env: 
          destination: ${{ matrix.destination }}

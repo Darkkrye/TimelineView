@@ -1,11 +1,11 @@
-name: Swift
+#name: Swift
 
-on: [push]
+#on: [push]
 
-jobs:
-  build:
+#jobs:
+#  build:
 
-    runs-on: macOS-latest
+#    runs-on: macOS-latest
 
 #    steps:
 #    - uses: actions/checkout@v1
@@ -15,10 +15,30 @@ jobs:
 #      run: swift test -v
 
 
+#    steps:
+#    - name: Checkout
+#      uses: actions/checkout@v1
+#    - name: Force xcode 11
+#      run: sudo xcode-select -switch /Applications/Xcode_11.1.app
+#    - name: iPhone 11 Test
+#      run: xcodebuild test -scheme affirm-me-test -workspace affirm-me.xcworkspace -destination 'platform=iOS Simulator,name=iPhone 11,OS=13.1'
+
+on: pull_request
+name: Test
+jobs:
+  test:
+    name: Test
+    runs-on: macOS-latest
+    strategy:
+        matrix:
+          destination: ['platform=iOS Simulator,OS=12.2,name=iPhone X']
     steps:
-    - name: Checkout
-      uses: actions/checkout@v1
-    - name: Force xcode 11
-      run: sudo xcode-select -switch /Applications/Xcode_11.1.app
-    - name: iPhone 11 Test
-      run: xcodebuild test -scheme affirm-me-test -workspace affirm-me.xcworkspace -destination 'platform=iOS Simulator,name=iPhone 11,OS=13.1'
+      - name: Checkout
+        uses: actions/checkout@v1
+      - name: Build and test
+        run: |
+          cd TimelineView
+          xcodebuild clean test -project TimelineView.xcodeproj -scheme TimelineView -destination "${destination}" CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO ONLY_ACTIVE_ARCH=NO
+#          bash <(curl -s https://codecov.io/bash)
+        env: 
+         destination: ${{ matrix.destination }}

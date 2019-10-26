@@ -23,7 +23,7 @@ public class TimelinePoint {
     internal var firstLabel: UILabel?
     internal var secondLabel: UILabel?
     
-    internal init(diameter: CGFloat = 15, strokeWidth: CGFloat = 2, strokeColor: UIColor = .clear, fillColor: UIColor = .clear, lineWidth: CGFloat = 2, lineColor: UIColor = .clear, firstLabel: UILabel? = nil, secondLabel: UILabel? = nil) {
+    public init(diameter: CGFloat = 15, strokeWidth: CGFloat = 2, strokeColor: UIColor = .clear, fillColor: UIColor = .clear, lineWidth: CGFloat = 2, lineColor: UIColor = .clear, firstLabel: UILabel? = nil, secondLabel: UILabel? = nil) {
         self.diameter = diameter
         self.strokeWidth = strokeWidth
         self.strokeColor = strokeColor

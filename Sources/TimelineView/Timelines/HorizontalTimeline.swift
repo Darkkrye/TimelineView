@@ -15,7 +15,7 @@ public class HorizontalTimeline: UIStackView {
     private var hasTopLabel: Bool = false
     private var hasBottomLabel: Bool = false
     
-    init(timePoints: [HorizontalTimePoint]) {
+    public init(timePoints: [HorizontalTimePoint]) {
         self.timePoints = timePoints
         
         // Check for labels

@@ -35,11 +35,13 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v1
-      - name: Build and test
+      - name: Build 
         run: |
           ls
           swift package generate-xcodeproj
           xcodebuild build -sdk iphoneos -scheme 'TimelineView-Package'
-          xcodebuild test -destination 'name=iPhone 8' -scheme 'TimelineView-Package'
+      - name: Run tests
+        run: |
+          xcodebuild test -destination 'name=iPhone X' -scheme 'TimelineView-Package'
         env: 
          destination: ${{ matrix.destination }}

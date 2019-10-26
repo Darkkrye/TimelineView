@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 
 @available(iOS 9.0, *)
-class HorizontalTimeline: UIStackView {
+public class HorizontalTimeline: UIStackView {
     private var timePoints: [HorizontalTimePoint] = []
     private var stacks: [UIStackView] = []
     private var hasTopLabel: Bool = false
@@ -93,7 +93,7 @@ class HorizontalTimeline: UIStackView {
         }
     }
     
-    override func layoutSubviews() {
+    override public func layoutSubviews() {
         // TODO: Manage multiple execution
         self.updateViews()
     }

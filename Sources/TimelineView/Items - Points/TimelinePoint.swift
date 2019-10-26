@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-internal class TimelinePoint {
+public class TimelinePoint {
     // Circle
     var diameter: CGFloat
     var strokeWidth: CGFloat

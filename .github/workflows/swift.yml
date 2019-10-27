@@ -1,47 +1,17 @@
-#name: Swift
-
-#on: [push]
-
-#jobs:
-#  build:
-
-#    runs-on: macOS-latest
-
-#    steps:
-#    - uses: actions/checkout@v1
-#    - name: Build
-#      run: swift build -v
-#    - name: Run tests
-#      run: swift test -v
-
-
-#    steps:
-#    - name: Checkout
-#      uses: actions/checkout@v1
-#    - name: Force xcode 11
-#      run: sudo xcode-select -switch /Applications/Xcode_11.1.app
-#    - name: iPhone 11 Test
-#      run: xcodebuild test -scheme affirm-me-test -workspace affirm-me.xcworkspace -destination 'platform=iOS Simulator,name=iPhone 11,OS=13.1'
+name: Swift Package
 
 on: pull_request
-name: Test
+
 jobs:
   test:
-    name: Test
+    name: Build And Test
     runs-on: macOS-latest
-    strategy:
-        matrix:
-          destination: ['platform=iOS Simulator,OS=12.2,name=iPhone X']
     steps:
       - name: Checkout
         uses: actions/checkout@v1
       - name: Build 
         run: |
-          ls
           swift package generate-xcodeproj
           xcodebuild build -sdk iphoneos -scheme 'TimelineView-Package'
-      - name: Run tests
-        run: |
-          xcodebuild test -destination 'name=iPhone X' -scheme 'TimelineView-Package'
-        env: 
-         destination: ${{ matrix.destination }}
+      - name: Run Tests
+        run: xcodebuild test -destination 'name=iPhone X' -scheme 'TimelineView-Package'

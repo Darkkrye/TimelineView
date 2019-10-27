@@ -1,0 +1,17 @@
+name: Swift Package
+
+on: pull_request
+
+jobs:
+  test:
+    name: Build And Test
+    runs-on: macOS-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v1
+      - name: Build 
+        run: |
+          swift package generate-xcodeproj
+          xcodebuild build -sdk iphoneos -scheme 'TimelineView-Package'
+      - name: Run Tests
+        run: xcodebuild test -destination 'name=iPhone X' -scheme 'TimelineView-Package'

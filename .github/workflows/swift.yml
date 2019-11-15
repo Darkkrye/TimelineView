@@ -14,4 +14,4 @@ jobs:
           swift package generate-xcodeproj
           xcodebuild build -sdk iphoneos -scheme 'TimelineView-Package'
       - name: Run Tests
-        run: xcodebuild test -destination 'name=iPhone X' -scheme 'TimelineView-Package'
+        run: xcodebuild test -destination 'name=iPhone 11 Pro Max' -scheme 'TimelineView-Package'

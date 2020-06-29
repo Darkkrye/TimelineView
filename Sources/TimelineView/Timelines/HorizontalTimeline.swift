@@ -14,6 +14,7 @@ public class HorizontalTimeline: UIStackView {
     private var stacks: [UIStackView] = []
     private var hasTopLabel: Bool = false
     private var hasBottomLabel: Bool = false
+    private var drawn: Bool = false
     
     public init(timePoints: [HorizontalTimePoint]) {
         self.timePoints = timePoints
@@ -95,6 +96,9 @@ public class HorizontalTimeline: UIStackView {
     
     override public func layoutSubviews() {
         // TODO: Manage multiple execution
-        self.updateViews()
+        if !drawn {
+            self.drawn = true
+            self.updateViews()
+        }
     }
 }

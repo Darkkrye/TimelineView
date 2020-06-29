@@ -20,10 +20,10 @@ public class TimelinePoint {
     var lineColor: UIColor
     
     // Labels
-    var firstLabel: UILabel?
-    var secondLabel: UILabel?
+    var firstLabel: UIView?
+    var secondLabel: UIView?
     
-    public init(diameter: CGFloat = 15, strokeWidth: CGFloat = 2, strokeColor: UIColor = .clear, fillColor: UIColor = .clear, lineWidth: CGFloat = 2, lineColor: UIColor = .clear, firstLabel: UILabel? = nil, secondLabel: UILabel? = nil) {
+    public init(diameter: CGFloat = 15, strokeWidth: CGFloat = 2, strokeColor: UIColor = .clear, fillColor: UIColor = .clear, lineWidth: CGFloat = 2, lineColor: UIColor = .clear, firstLabel: UIView? = nil, secondLabel: UIView? = nil) {
         self.diameter = diameter
         self.strokeWidth = strokeWidth
         self.strokeColor = strokeColor
